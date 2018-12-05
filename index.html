@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pest App</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="scripts/styles.css">
+</head>
+<body>
+    <div id="container">
+        <nav class="navbar fixed-top navbar-dark" id="top-menu-t1">
+            <h1 id="section-heading">Select Area</h1>
+            <button class="navbar-toggler" type="button" id="showLeft">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+        </nav>
+        <nav class="side-menu side-menu-vertical side-menu-left" id="side-menu-s1">
+                <!--<h3>Menu</h3>-->
+                <a href="#">General Inspection</a>
+                <a href="#">Trap Inspection</a>
+                <a href="#">Incident</a>
+                <a href="#"></a>
+                <a href="#"></a>
+                <a href="#">Sync Now</a>
+            </nav>
+        <div id="select-area" >
+            <!--<header>
+                <button class="navbar-toggler" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <h1>Select Area</h1>
+            </header>-->
+            
+            <!-- <fieldset class="d-flex flex-wrap align-items-center"> -->
+            <fieldset id="repositories">
+                <legend>Repositories</legend>
+                <button type="button" class="btn btn-outline-primary btn" data-image-file="Repository01Map.jpg">R1</button>
+                <button type="button" class="btn btn-outline-primary btn">R2</button>
+                <button type="button" class="btn btn-outline-primary btn">R3</button>
+                <button type="button" class="btn btn-outline-primary btn">R4</button>
+                <button type="button" class="btn btn-outline-primary btn">R5</button>
+                <button type="button" class="btn btn-outline-primary btn">R6</button>
+                <button type="button" class="btn btn-outline-primary btn">R7</button>
+                <button type="button" class="btn btn-outline-primary btn">R8</button>
+                <button type="button" class="btn btn-outline-primary btn">R9</button>
+                <button type="button" class="btn btn-outline-primary btn">R10</button>
+                <button type="button" class="btn btn-outline-primary btn">R11</button>
+                <button type="button" class="btn btn-outline-primary btn">R12</button>
+                <button type="button" class="btn btn-outline-primary btn">R13</button>
+                <button type="button" class="btn btn-outline-primary btn">R14</button>
+                <button type="button" class="btn btn-outline-primary btn">R15</button>
+                <button type="button" class="btn btn-outline-primary btn">R16</button>
+                <button type="button" class="btn btn-outline-primary btn">R17</button>
+                <button type="button" class="btn btn-outline-primary btn">R18</button>
+                <button type="button" class="btn btn-outline-primary btn">R19</button>
+            </fieldset>
+            <fieldset id="preservation">
+                <legend>Preservation</legend>
+                <button type="button" class="btn btn-outline-success">Lab</button>
+                <button type="button" class="btn btn-outline-success">Bindery</button>
+                <button type="button" class="btn btn-outline-success">Storeroom</button>
+                <button type="button" class="btn btn-outline-success">Chemical Lab</button>
+                <button type="button" class="btn btn-outline-success">Flammables Store</button>
+                <button type="button" class="btn btn-outline-success">Drying</button>
+            </fieldset>
+            <fieldset id="other-areas">
+                <legend>Other areas</legend>
+                <button type="button" class="btn btn-outline-danger">Office</button>
+                <button type="button" class="btn btn-outline-danger">Public Kitchen</button>
+                <button type="button" class="btn btn-outline-danger">Staff Kitchen</button>
+                <button type="button" class="btn btn-outline-danger">Plantroom</button>
+                <button type="button" class="btn btn-outline-danger">Meeting Room</button>
+                <button type="button" class="btn btn-outline-danger">Lift</button>
+                <button type="button" class="btn btn-outline-danger">Loading Dock</button>
+                <button type="button" class="btn btn-outline-danger">PSR</button>
+                <button type="button" class="btn btn-outline-danger">Recption</button>
+                <button type="button" class="btn btn-outline-danger">Transfers</button>
+                <button type="button" class="btn btn-outline-danger">File Issue</button>
+                <button type="button" class="btn btn-outline-danger">Storeroom</button>
+                <button type="button" class="btn btn-outline-danger">Fire Escape</button>
+                <button type="button" class="btn btn-outline-danger">Corridor</button>
+                <button type="button" class="btn btn-outline-danger">Car Park</button>
+            </fieldset>
+        </div><!-- end select-area-->
+
+        <div id="display-map">
+            <canvas id="map-canvas">
+
+            </canvas>
+        </div><!-- end display-map-->
+
+        <div>
+            <img src="images/camera.png" width="50px" height="50px" id="camera-icon">
+        </div>
+
+        <!-- Camera -->
+        <div id="camera">
+            <!-- Camera sensor -->
+            <canvas id="camera--sensor"></canvas>
+            <!-- Camera view -->
+            <video id="camera--view" autoplay playsinline></video>
+            <!-- Camera output -->
+            <img src="//:0" alt="" id="camera--output"> <!-- prevents the empty image icon and browser security warning-->
+            <!-- Camera trigger -->
+            <button id="camera--trigger">Take a picture</button>
+        </div>
+
+
+        <div id="record-details">
+
+        </div><!-- end record-details -->
+
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- Classie - class helper functions by @desandro https://github.com/desandro/classie -->
+	<script src="scripts/classie.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+</html>
