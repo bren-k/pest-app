@@ -1,0 +1,186 @@
+/* Styles for Pest App */
+
+body {
+    background-color: lightcyan;
+}
+img {
+    width: 100%;
+    height: auto;
+}
+.navbar {
+    justify-content: flex-start;
+    padding: 0 1rem;
+    background-color: rgba(48, 45, 45, 0.671);
+}
+.navbar h1 {
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    font-size: 2rem;
+}
+
+fieldset {
+    margin: 5px;
+    padding: 5px auto;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+legend {
+    display: inline-block;
+    padding: auto 5px;
+    width: auto; 
+}
+
+fieldset#repositories {
+    border: solid 1px rgb(100, 100, 150);
+}
+
+#repositories legend {
+    color: rgb(100, 100, 150);
+}
+
+fieldset#preservation {
+    border: solid 1px rgb(100, 150, 100);
+}
+
+#preservation legend {
+    color: rgb(100, 150, 100);
+}
+
+fieldset#other-areas {
+    border: solid 1px rgb(150, 100, 100);
+}
+
+#other-areas legend {
+    color: rgb(150, 100, 100);
+}
+
+.btn {
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+#other-areas .btn, #preservation .btn {
+    padding: .375rem .375rem;
+}
+
+#map-canvas {
+    width: 100vw;
+    height: 100vh;
+    background-color: lightcoral;
+}
+
+  /* styles for left side menu */
+
+.side-menu {
+	background: #47a3da;
+	position: fixed;
+}
+
+.side-menu h3 {
+	color: #afdefa;
+	font-size: 1.9em;
+	padding: 20px;
+	margin: 0;
+	font-weight: 300;
+	background: #0d77b6;
+}
+
+.side-menu a {
+	display: block;
+	color: #fff;
+	font-size: 1.1em;
+	font-weight: 300;
+}
+
+.side-menu a:hover {
+	background: #258ecd;
+}
+
+.side-menu a:active {
+	background: #afdefa;
+	color: #47a3da;
+}
+
+/* style content of the menu for vertical layout */
+
+.side-menu-vertical {
+	width: 240px;
+	height: 100%;
+	top: 0;
+	z-index: 1000;
+}
+
+.side-menu-vertical a {
+	border-bottom: 1px solid #258ecd;
+	padding: 1em;
+}
+
+/* vertical menu that slides from the left */
+
+.side-menu-left {
+	left: -240px;
+}
+
+.side-menu-left.side-menu-open {
+	left: 0px;
+}
+
+/* transition for menu */
+
+.side-menu {
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+/* camera */
+#camera-icon {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+}
+
+#camera, #camera--view, #camera--sensor, #camera--output {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover; /* so the video takes up the whole screen */
+}
+
+#camera {
+    display: none;
+}
+
+/* mainly if using the front facing camera - to mirror the image to make it feel more natural */
+#camera--view, #camera--sensor, #camera--output {
+    transform: scaleX(-1);
+    filter: FlipH;
+}
+
+#camera--trigger {
+    width: 200px;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    border-radius: 30px;
+    border: none;
+    padding: 15px 20px;
+    text-align: center;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+    position: absolute;
+    bottom: 30px;
+    left: calc(50% - 100px);
+}
+
+.taken {
+    height: 100px!important;
+    width: 100px!important;
+    transition: all 0.5s ease-in;
+    border: solid 3px white;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+    top: 20px;
+    right: 20px;
+    z-index: 2;
+}
