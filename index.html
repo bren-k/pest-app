@@ -91,26 +91,37 @@
 
             </canvas>
         </div><!-- end display-map-->
-
+    <!--
         <div>
             <img src="images/camera.png" width="50px" height="50px" id="camera-icon">
         </div>
-
+    -->
         <!-- Camera -->
-        <div id="camera">
+    <!--    <div id="camera"> -->
             <!-- Camera sensor -->
-            <canvas id="camera--sensor"></canvas>
+    <!--        <canvas id="camera--sensor"></canvas> -->
             <!-- Camera view -->
-            <video id="camera--view" autoplay playsinline></video>
+    <!--        <video id="camera--view" autoplay playsinline></video> -->
             <!-- Camera output -->
-            <img src="//:0" alt="" id="camera--output"> <!-- prevents the empty image icon and browser security warning-->
+    <!--        <img src="//:0" alt="" id="camera--output"> --> <!-- prevents the empty image icon and browser security warning -->
             <!-- Camera trigger -->
-            <button id="camera--trigger">Take a picture</button>
+    <!--        <button id="camera--trigger">Take a picture</button>
         </div>
-
-
+    -->
+    <input type="file" name="image" accept="image/*" capture="environment">
         <div id="record-details">
-
+            <fieldset>
+                <legend>Pest</legend>
+                <button type="button" class="btn btn-outline-primary btn">ant</button>
+                <button type="button" class="btn btn-outline-primary btn">silverfish</button>
+                <button type="button" class="btn btn-outline-primary btn">book borer</button>
+            </fieldset>
+            <fieldset>
+                <legend>Size</legend>
+                <button type="button" class="btn btn-outline-primary btn">ant</button>
+                <button type="button" class="btn btn-outline-primary btn">silverfish</button>
+                <button type="button" class="btn btn-outline-primary btn">book borer</button>
+            </fieldset>
         </div><!-- end record-details -->
 
     </div>
