@@ -37,43 +37,5 @@ function initApplication() {
         });
     });
     
-    /* camera */
-    // Set constraints for the video stream
-    var constraints = { video: { facingMode: "environment" }, audio: false }; //"user" for front camera
-    // Define constants
-    const camera = document.querySelector("#camera"),
-        cameraView = document.querySelector("#camera--view"),
-        cameraOutput = document.querySelector("#camera--output"),
-        cameraSensor = document.querySelector("#camera--sensor"),
-        cameraTrigger = document.querySelector("#camera--trigger");
-
-    // Access the device camera and stream  the video to cameraView
-    function cameraStart() {
-        camera.style.display = "block";
-        camera.scrollIntoView();
-        sectionHeading.textContent = "Take Photo";
-        navigator.mediaDevices
-            .getUserMedia(constraints)
-            .then(function(stream) {
-            //track = stream.getTracks()[0];
-            cameraView.srcObject = stream;
-        })
-        .catch(function(error) {
-            console.error("Oops. Something is broken.", error);
-        });
-    };
-
-    // Take a picture when cameraTrigger is tapped
-    cameraTrigger.addEventListener("click", function() {
-        cameraSensor.width = cameraView.videoWidth;
-        cameraSensor.height = cameraView.videoHeight;
-        cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
-        cameraOutput.src = cameraSensor.toDataURL("image/webp");
-        cameraOutput.classList.add("taken");
-    });
-
-    // Start the video stream when the camera icon is clicked
-    const cameraIcon = document.getElementById('camera-icon');
-    cameraIcon.addEventListener("click", cameraStart, false);
 
 }//end initApplication() function

@@ -24,12 +24,14 @@ fieldset {
     padding: 5px auto;
     padding-bottom: 10px;
     text-align: center;
+    border: solid 1px black;
 }
 
 legend {
     display: inline-block;
     padding: auto 5px;
     width: auto; 
+    color: black;
 }
 
 fieldset#repositories {
@@ -142,45 +144,28 @@ fieldset#other-areas {
     height: 50px;
 }
 
-#camera, #camera--view, #camera--sensor, #camera--output {
-    position: relative;
-    height: 100vh;
-    width: 100vw;
-    object-fit: cover; /* so the video takes up the whole screen */
-}
-
 #camera {
-    display: none;
+    position: relative;
 }
-
-/* mainly if using the front facing camera - to mirror the image to make it feel more natural */
-#camera--view, #camera--sensor, #camera--output {
-    transform: scaleX(-1);
-    filter: FlipH;
+#camera label {
+    padding: 20px;
 }
-
-#camera--trigger {
-    width: 200px;
-    background-color: black;
-    color: white;
-    font-size: 16px;
-    border-radius: 30px;
-    border: none;
-    padding: 15px 20px;
-    text-align: center;
-    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+input[type=file] {
+    opacity: 0;
+}
+#preview {
     position: absolute;
-    bottom: 30px;
-    left: calc(50% - 100px);
-}
-
-.taken {
-    height: 100px!important;
-    width: 100px!important;
+    height: 120px!important;
+    width: 120px!important;
+    top: 0px;
+    right: 5px;
+    z-index: 2;
     transition: all 0.5s ease-in;
     border: solid 3px white;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
-    top: 20px;
-    right: 20px;
-    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+
