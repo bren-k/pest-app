@@ -13,14 +13,14 @@ function initApplication() {
     const showLeftMenu = document.getElementById("showLeft");
 
     showLeftMenu.addEventListener("click", function() {
-        classie.toggle( this, 'active' );
-        classie.toggle( menuLeft, 'side-menu-open' );
+        classie.toggle( this, "active" );
+        classie.toggle( menuLeft, "side-menu-open" );
     });
 
-    /* load imagemap into canvas */
+    /* load map image into canvas */
     const mapPath = "../maps/";
-    const canvas = document.getElementById('map-canvas');
-    const context = canvas.getContext('2d');
+    const canvas = document.getElementById("map-canvas");
+    const context = canvas.getContext("2d");
 
 
     document.querySelectorAll("#repositories button").forEach( function(element) {
@@ -28,10 +28,10 @@ function initApplication() {
         element.addEventListener("click", function() {
             let imageObj = new Image();
             console.log(mapPath+attribute);
-            imageObj.src = mapPath+attribute;
-            imageObj.onload = function() {
+            imageObj.addEventListener("load", function() {
                 context.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height, 0, 0, canvas.width, canvas.height);
-              };
+            });
+            imageObj.src = mapPath+attribute;
             document.getElementById("display-map").scrollIntoView();
             sectionHeading.textContent = "Record Location";
         });
@@ -41,7 +41,7 @@ function initApplication() {
     let photo_preview = document.getElementById("preview");
 
 
-    //photo_input.addEventListener("change", displayPreview);
+    photo_input.addEventListener("change", displayPreview);
 
     function displayPreview() {
         //remove existing preview (if any)
