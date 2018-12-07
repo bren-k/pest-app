@@ -38,10 +38,10 @@ function initApplication() {
     });
 
     let photo_input = document.getElementById("pest_photo");
-    let photo_preview = document.qgetElementById("preview");
+    let photo_preview = document.getElementById("preview");
 
 
-    photo_input.addEventListener("change", displayPreview);
+    //photo_input.addEventListener("change", displayPreview);
 
     function displayPreview() {
         //remove existing preview (if any)
