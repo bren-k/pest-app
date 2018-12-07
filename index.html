@@ -91,24 +91,17 @@
 
             </canvas>
         </div><!-- end display-map-->
-    <!--
-        <div>
-            <img src="images/camera.png" width="50px" height="50px" id="camera-icon">
+
+    <!-- Take Photo -->
+    <div id="camera">
+        <label for="pest_image"><img src="images/camera.png" id="camera-icon"></label><br>
+        <input type="file" id="pest_image" name="pest_image" accept="image/*" capture="environment">
+        <div id="preview">
+                No photo
         </div>
-    -->
-        <!-- Camera -->
-    <!--    <div id="camera"> -->
-            <!-- Camera sensor -->
-    <!--        <canvas id="camera--sensor"></canvas> -->
-            <!-- Camera view -->
-    <!--        <video id="camera--view" autoplay playsinline></video> -->
-            <!-- Camera output -->
-    <!--        <img src="//:0" alt="" id="camera--output"> --> <!-- prevents the empty image icon and browser security warning -->
-            <!-- Camera trigger -->
-    <!--        <button id="camera--trigger">Take a picture</button>
-        </div>
-    -->
-    <input type="file" name="image" accept="image/*" capture="environment">
+    </div> 
+
+    <!-- Pest Type -->
         <div id="record-details">
             <fieldset>
                 <legend>Pest</legend>
