@@ -42,8 +42,8 @@ function initApplication() {
                 //context.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height, 0, 0, canvas.width, canvas.height);
                 drawOnCanvas(context, imageObj, dragObj);
             }, false);
-            imageObj.src = mapPath+fileName;
-            //imageObj.src = dummy_image;
+            //imageObj.src = mapPath+fileName;
+            imageObj.src = dummy_image;
             document.getElementById("display-map").scrollIntoView();
             sectionHeading.textContent = "Record Location";
             loadedImageObj = imageObj;
