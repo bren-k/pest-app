@@ -5,6 +5,8 @@ document.onreadystatechange = function () {
     }
 }
 
+////////////////////////////////// initApplication() function //////////////////////////////////
+
 function initApplication() {
     const sectionHeading = document.getElementById("section-heading");
 
@@ -18,25 +20,79 @@ function initApplication() {
     });
 
     /* load map image into canvas */
+    const dummy_image = "https://upload.wikimedia.org/wikipedia/commons/c/cd/Maps.me_screenshot_7.0.5.png";
+
     const mapPath = "../maps/";
-    const canvas = document.getElementById("map-canvas");
-    const context = canvas.getContext("2d");
+    let canvas = document.getElementById("map-canvas");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    let context = canvas.getContext("2d");
+    //store currently loaded image so that we can redraw it when dragging marker
+    let loadedImageObj;
+    //initialise our drag object
+    let dragObj = { x: 50, y: 50, w: 70, h: 70 };
 
-
+    /* add events to buttons */
     document.querySelectorAll("#repositories button").forEach( function(element) {
-        let attribute = element.getAttribute("data-image-file");
+        const fileName = element.getAttribute("data-image-file");
         element.addEventListener("click", function() {
             let imageObj = new Image();
-            console.log(mapPath+attribute);
+            //console.log(mapPath+fileName);
             imageObj.addEventListener("load", function() {
-                context.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height, 0, 0, canvas.width, canvas.height);
-            });
-            imageObj.src = mapPath+attribute;
+                //context.drawImage(imageObj, 0, 0, imageObj.width, imageObj.height, 0, 0, canvas.width, canvas.height);
+                drawOnCanvas(context, imageObj, dragObj);
+            }, false);
+            imageObj.src = mapPath+fileName;
+            //imageObj.src = dummy_image;
             document.getElementById("display-map").scrollIntoView();
             sectionHeading.textContent = "Record Location";
+            loadedImageObj = imageObj;
+            //context.fillStyle = 'blue';
+            //draw our object in its new position
+            //context.fillRect(dragObj.x, dragObj.y, dragObj.w, dragObj.h);
+            //draw();
         });
     });
 
+    /* drag and drop functionality */
+    //add eventlistener to canvas
+    canvas.addEventListener("touchmove", function () {
+        //assume only one touch/only process one touch even if there's more
+        let touch = event.targetTouches[0];
+
+        //is touch close enough to our object?
+        if (detectHit(dragObj.x, dragObj.y, touch.pageX, touch.pageY, dragObj.w, dragObj.h)) {
+            //assign new coordinates to our object
+            dragObj.x = touch.pageX;
+            dragObj.y = touch.pageY;
+            //redraw the canvas
+            drawOnCanvas(context, loadedImageObj, dragObj);
+        }
+        event.preventDefault();
+    }, false);
+
+    function detectHit(x1, y1, x2, y2, w, h) {
+        //very simple detection here
+        if (x2 - x1 > w) return false;
+        if (y2 - y1 > h) return false;
+        return true;
+    }
+
+    function drawOnCanvas(ctx, image, obj) {
+        console.log(obj);
+        //clear the current canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        //redraw the image
+        //ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(image, 0, 0);
+        ctx.fillStyle = "blue";
+        //redraw our object in its new position
+        ctx.fillRect(obj.x, obj.y, obj.w, obj.h);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /* camera and preview functionality */
     let photo_input = document.getElementById("pest_photo");
     let photo_preview = document.getElementById("preview");
 
@@ -56,8 +112,8 @@ function initApplication() {
         else {
             photo_preview.textContent = "";
             if(validFileType(curFiles[0])) {
-                //para.textContent = 'File name ' + curFiles[0].name + ', file size ' + returnFileSize(curFiles[0].size) + '.';
-                var image = document.createElement("img");
+                console.log("File name " + curFiles[0].name + ", file size " + returnFileSize(curFiles[0].size));
+                let image = document.createElement("img");
                 image.src = window.URL.createObjectURL(curFiles[0]);
 
                 photo_preview.appendChild(image);
@@ -68,7 +124,7 @@ function initApplication() {
         }
     }//end displayPreview() function
 
-let fileTypes = [
+const fileTypes = [
   "image/jpeg",
   "image/png"
 ]
